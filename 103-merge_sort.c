@@ -53,3 +53,17 @@ void merge_sort(int *array, size_t size)
 	if (size < 2)
 		return;
 
+	mid = size / 2;
+	/*left = (int*)malloc(sizeof(int) * mid);*/
+	/*right = (int*)malloc(sizeof(int) * (size - mid));*/
+	
+	for (i = 0; i < mid; i++)
+		left[i] = array[i];
+
+	for (i = mid; i < size; i++)
+		right[i - mid] = array[i];
+	
+	merge_sort(left, mid);
+	merge_sort(right, size - mid);
+	merge(array, left, right, size);
+}
